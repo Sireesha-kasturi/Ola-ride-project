@@ -10,7 +10,7 @@ import plotly.express as px
 import streamlit as st
 import streamlit.components.v1 as components
 
-from queries import QUERIES
+
 
 # ----------------------------------------------------------------------------
 # Config
