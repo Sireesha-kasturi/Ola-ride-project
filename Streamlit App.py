@@ -1,6 +1,6 @@
-import Streamlit as st
-from __future__ import annotations
 
+from __future__ import annotations
+import Streamlit as st
 import re
 import sqlite3
 from pathlib import Path
