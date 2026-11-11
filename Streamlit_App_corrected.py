@@ -50,15 +50,30 @@ st.markdown(
 # ----------------------------------------------------------------------------
 # Data layer
 # ----------------------------------------------------------------------------
+
 @st.cache_data(show_spinner="Loading ride data...")
 def load_data() -> pd.DataFrame:
+
     if CLEAN_CSV.exists():
         df = pd.read_csv(CLEAN_CSV)
-    else:  # fall back to cleaning the raw workbook on the fly
+
+    else:
+        # Fall back to cleaning the raw Excel workbook
         from data_prep import clean
-    df = clean(pd.read_excel(RAW_XLSX, sheet_name="July"))
-    df["Booking_DateTime"] = pd.to_datetime(df["Booking_DateTime"])
-    df["Ride_Date"] = pd.to_datetime(df["Ride_Date"]).dt.date
+
+        df = clean(
+            pd.read_excel(RAW_XLSX, sheet_name="July")
+        )
+
+    # Convert date columns
+    df["Booking_DateTime"] = pd.to_datetime(
+        df["Booking_DateTime"]
+    )
+
+    df["Ride_Date"] = pd.to_datetime(
+        df["Ride_Date"]
+    ).dt.date
+
     return df
 
 
@@ -82,10 +97,13 @@ def run_sql(sql: str) -> pd.DataFrame:
 
 def inr(x: float) -> str:
     """Indian-style short currency: ₹3.51 Cr / ₹12.4 L / ₹9,850."""
+
     if x >= 1e7:
         return f"₹{x/1e7:,.2f} Cr"
+
     if x >= 1e5:
         return f"₹{x/1e5:,.2f} L"
+
     return f"₹{x:,.0f}"
 
 
