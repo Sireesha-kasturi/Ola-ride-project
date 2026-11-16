@@ -52,13 +52,13 @@ st.markdown(
 # ----------------------------------------------------------------------------
 @st.cache_data(show_spinner="Loading ride data...")
 def load_data() -> pd.DataFrame:
-    if CLEAN_CSV.exists():
-        df = pd.read_csv(CLEAN_CSV)
-    else:  # fall back to cleaning the raw workbook on the fly
-        from data_prep import clean
-        df = clean(pd.read_excel(RAW_XLSX, sheet_name="July"))
-    df["Booking_DateTime"] = pd.to_datetime(df["Booking_DateTime"])
-    df["Ride_Date"] = pd.to_datetime(df["Ride_Date"]).dt.date
+from pathlib import Path
+import pandas as pd
+
+BASE_DIR = Path(__file__).resolve().parent
+DATA_FILE = BASE_DIR / "data" / "OLA_DataSet.xlsx"
+
+data = pd.read_excel(DATA_FILE, sheet_name="July")
     return df
 
 
