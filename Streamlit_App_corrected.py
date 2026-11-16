@@ -56,7 +56,7 @@ def load_data() -> pd.DataFrame:
 DATA_FILE = BASE_DIR / "data" / "OLA_DataSet.xlsx"
 
 data = pd.read_excel(DATA_FILE, sheet_name="July")
-return df
+    return df
 
 
 @st.cache_resource(show_spinner="Building SQL engine...")
