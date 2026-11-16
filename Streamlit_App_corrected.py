@@ -113,7 +113,7 @@ def show(fig, height: int = 380):
     st.plotly_chart(fig, width="stretch")
 
 
-data = load_data()
+df = load_data()
 
 # ----------------------------------------------------------------------------
 # Sidebar: navigation + filters
