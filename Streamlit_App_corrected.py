@@ -56,9 +56,7 @@ def load_data() -> pd.DataFrame:
 
     if CLEAN_CSV.exists():
         df = pd.read_csv("ola_rides_clean.csv")
-    else:
-        # Fall back to cleaning the raw Excel workbook
-        from data_prep import clean
+   
 
         df = clean(
             pd.read_excel(RAW_XLSX, sheet_name="July")
