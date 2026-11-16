@@ -52,10 +52,7 @@ st.markdown(
 # ----------------------------------------------------------------------------
 @st.cache_data(show_spinner="Loading ride data...")
 def load_data() -> pd.DataFrame:
-from pathlib import Path
-import pandas as pd
-
-BASE_DIR = Path(__file__).resolve().parent
+    BASE_DIR = Path(__file__).resolve().parent
 DATA_FILE = BASE_DIR / "data" / "OLA_DataSet.xlsx"
 
 data = pd.read_excel(DATA_FILE, sheet_name="July")
