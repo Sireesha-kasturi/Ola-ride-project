@@ -18,7 +18,7 @@ import streamlit.components.v1 as components
 st.set_page_config(page_title="OLA Ride Insights", page_icon="🚖", layout="wide")
 
 BASE_DIR = Path(__file__).resolve().parent
-CLEAN_CSV = BASE_DIR / "data" / "ola_rides_clean.csv.gz"
+CLEAN_CSV = BASE_DIR / "data" / "ola_rides_clean.csv"
 RAW_XLSX = BASE_DIR / "data" / "OLA_DataSet.xlsx"
 
 ACCENT = "#1E7F3A"          # deep green (OLA-inspired, readable on light/dark)
@@ -114,7 +114,7 @@ def show(fig, height: int = 380):
     st.plotly_chart(fig, width="stretch")
 
 
-df_all = load_data()
+data = load_data()
 
 # ----------------------------------------------------------------------------
 # Sidebar: navigation + filters
