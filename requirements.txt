@@ -1,7 +1,7 @@
 streamlit
 pandas
-mysql-connector-python
-python-dotenv
+numpy
+matplotlib
 plotly
-pymysql
-requests
+openpyxl
+seaborn
