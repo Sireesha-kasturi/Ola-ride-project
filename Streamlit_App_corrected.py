@@ -51,7 +51,7 @@ st.markdown(
 # Data layer
 # ----------------------------------------------------------------------------
 @st.cache_data(show_spinner="Loading ride data...")
- DATA_FILE = BASE_DIR / "data" / "OLA_DataSet.xlsx"
+DATA_FILE = BASE_DIR / "data" / "OLA_DataSet.xlsx"
 
     # Check whether the file exists
     if not DATA_FILE.exists():
