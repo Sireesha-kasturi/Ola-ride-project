@@ -51,12 +51,20 @@ st.markdown(
 # Data layer
 # ----------------------------------------------------------------------------
 @st.cache_data(show_spinner="Loading ride data...")
-df = pd.read_excel(
+ DATA_FILE = BASE_DIR / "data" / "OLA_DataSet.xlsx"
+
+    # Check whether the file exists
+    if not DATA_FILE.exists():
+        st.error(f"Excel file not found: {DATA_FILE}")
+        st.stop()
+
+    try:
+        df = pd.read_excel(
             DATA_FILE,
             sheet_name="July",
             engine="openpyxl"
         )
-    return df
+        return df
 
     except Exception as e:
         st.error(f"Error loading Excel file: {e}")
