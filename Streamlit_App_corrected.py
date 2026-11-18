@@ -51,14 +51,16 @@ st.markdown(
 # Data layer
 # ----------------------------------------------------------------------------
 @st.cache_data(show_spinner="Loading ride data...")
-def load_data() -> pd.DataFrame:
-    BASE_DIR = Path(__file__).resolve().parent
-    DATA_FILE = BASE_DIR / "data" / "OLA_DataSet.xlsx"
+ df = pd.read_excel(
+            DATA_FILE,
+            sheet_name="July",
+            engine="openpyxl"
+        )
+        return df
 
-    df = pd.read_excel(DATA_FILE, sheet_name="July")
-
-    return df
-
+    except Exception as e:
+        st.error(f"Error loading Excel file: {e}")
+        st.stop()
 @st.cache_resource(show_spinner="Building SQL engine...")
 def get_connection() -> sqlite3.Connection:
     """In-memory SQLite DB holding the full cleaned table `ola_rides`."""
