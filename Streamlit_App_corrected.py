@@ -53,11 +53,11 @@ st.markdown(
 @st.cache_data(show_spinner="Loading ride data...")
 def load_data() -> pd.DataFrame:
     BASE_DIR = Path(__file__).resolve().parent
-DATA_FILE = BASE_DIR / "data" / "OLA_DataSet.xlsx"
+    DATA_FILE = BASE_DIR / "data" / "OLA_DataSet.xlsx"
 
-data = pd.read_excel(DATA_FILE, sheet_name="July")
+    df = pd.read_excel(DATA_FILE, sheet_name="July")
+
     return df
-
 
 @st.cache_resource(show_spinner="Building SQL engine...")
 def get_connection() -> sqlite3.Connection:
