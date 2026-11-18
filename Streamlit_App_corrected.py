@@ -51,12 +51,12 @@ st.markdown(
 # Data layer
 # ----------------------------------------------------------------------------
 @st.cache_data(show_spinner="Loading ride data...")
- df = pd.read_excel(
+df = pd.read_excel(
             DATA_FILE,
             sheet_name="July",
             engine="openpyxl"
         )
-        return df
+    return df
 
     except Exception as e:
         st.error(f"Error loading Excel file: {e}")
